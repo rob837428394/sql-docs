@@ -106,10 +106,11 @@ To use a SAN, the TLS/SSL certificate must be registered on the server, signed, 
 9. Create a new entry for the subject alternative name, with the same user and SDDL as the existing entry, by typing the following.  
   
     ```  
-    netsh http>add urlacl  url=https://www.s2.com:443/ReportServer    
+    netsh http>add urlacl  url=https://www.s2.com:443/ReportServer/    
     user="NT Service\ReportServer" sddl=D:(A;;GX;;;S-1-5-80-1234567980-12346579-123456789-123456789-1234567890)  
   
     ```  
+    [!NOTE] For Power BI Report Server: ensure there is also an associated urlacl entry for each name ending with /PowerBI/   
   
 10. On the **Report Server Status** page of the Reporting Services Configuration Manager, Click **Stop** and then click **Start** to restart the report server.  
   
