@@ -39,6 +39,9 @@ Setspn -s http/<computer-name>.<domain-name> <domain-user-account>
  **HTTP** is the service class. The Report Server Web service runs in HTTP.SYS. A by-product of creating an SPN for HTTP is that all Web applications on the same computer that run in HTTP.SYS (including applications hosted in IIS) will be granted tickets based on the domain user account. If those services run under a different account, the authentication requests will fail. To avoid this problem, be sure to configure all HTTP applications to run under the same account, or consider creating host headers for each application and then creating separate SPNs for each host header. When you configure host headers, DNS changes are required regardless of the [!INCLUDE[ssRSnoversion](../../includes/ssrsnoversion-md.md)] configuration.  
   
  The values that you specify for \<*computername*> and \<*domainname*> identify the unique network address of the computer that hosts the report server. This can be a local host name or a fully qualified domain name (FQDN). If you only have one domain, you can omit \<*domainname*> from your command line. \<*domain-user-account*> is the user account under which the Report Server service runs and for which the SPN must be registered.  
+ 
+> [!NOTE]
+> As the HTTPS protocol is included in the HTTP service class, HTTPS addresses need to have a HTTP SPN registered. HTTPS is an invalid SPN service class, they can be created but won't be used.       
   
 ## Register an SPN for Domain User Account  
   
